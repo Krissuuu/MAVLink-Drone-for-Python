@@ -14,7 +14,7 @@ pip install paho-mqtt
 2. Follow https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux to setup the SITL environment.
 3. Follow https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md to build the SITL source code. ***I use ./waf configure --board sitl***
 4. ***If you use Linux pls skip this step***, Download https://sourceforge.net/projects/vcxsrv/ to visualize the Linux windows.
-5. Input the command sim_vehicle.py -v ArduCopter --console on WSL terminal to run SITL. ***Input command <sim_vehicle.py -h> to see how to use the exist parameters***
+5. Input the command ***<sim_vehicle.py -v ArduCopter --console>*** on WSL terminal to run SITL. ***Input command <sim_vehicle.py -h> to see how to use the exist parameters***
 6. Open ***Mission Planner*** or ***QGroundControl*** to control the virtual drone.
 7. If you want to use ***AirSim*** virtual enviroment, start the ***Unreal Engine***, the ***setting.json*** file must to be set first, pls refer to https://ardupilot.org/dev/docs/sitl-with-airsim.html.
 8. After press the ***PLAY*** buttom on ***Unreal Engine***, input the command ***<sim_vehicle.py -v ArduCopter -f airsim-copter --console>*** on WSL terminal to connect the Airsim.
