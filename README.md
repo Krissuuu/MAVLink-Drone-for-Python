@@ -2,7 +2,8 @@
 
 - [Build ArduPilot SITL](#A)
 - [Control Program](#B)
-- [Reference](#C)
+- [Test Environment](#C)
+- [Reference](#D)
 
 ## *<a id="A">Build ArduPilot SITL</a>*
 1. ***If you use Linux pls skip this step***, Install WSL (Win10 Subsystem).
@@ -121,8 +122,88 @@ def ARM_DISARM(self, is_armed):
                 ,0, 0, 0, 0, 0)                               # param 3~7
     self.vehicle.send_mavlink(msg)
 ```
+## *<a id="C">Test Environment</a>*
+```
+Package               Version
+--------------------- -------------------
+aiohttp               3.7.4.post0        
+aioice                0.7.5
+aiortc                1.2.0
+airsim                1.3.0
+async-timeout         3.0.1
+async-to-sync         0.2.2
+attrs                 20.3.0
+av                    8.0.3
+bidict                0.21.2
+certifi               2020.6.20
+cffi                  1.14.5
+chardet               4.0.0
+click                 8.0.1
+colorama              0.4.4
+crc32c                2.2
+cryptography          3.4.6
+cycler                0.10.0
+dataclasses           0.8
+dnspython             2.1.0
+dronekit              2.9.2
+dronekit-sitl         3.3.0
+future                0.18.2
+idna                  3.1
+idna-ssl              1.1.0
+importlib-metadata    4.6.1
+kiwisolver            1.2.0
+lxml                  4.5.2
+matplotlib            3.3.0
+MAVProxy              1.8.20
+monotonic             1.5
+msgpack-python        0.5.6
+msgpack-rpc-python    0.4.1
+multidict             5.1.0
+netifaces             0.10.9
+numpy                 1.19.1
+opencv-contrib-python 4.5.1.48
+opencv-python         4.3.0.36
+paho-mqtt             1.5.1
+pika                  1.2.0
+Pillow                7.2.0
+pip                   20.1.1
+psutil                5.7.2
+pycparser             2.20
+pyee                  8.1.0
+pygame                1.9.6
+pylibsrtp             0.6.8
+pymavlink             2.4.11
+pyparsing             2.4.7
+PyQt5                 5.10.1
+pyqt5-plugins         5.15.4.2.2
+PyQt5-Qt5             5.15.2
+PyQt5-sip             12.9.0
+pyqt5-tools           5.9.0.1.2
+pyreadline            2.1
+pyserial              3.4
+python-dateutil       2.8.1
+python-dotenv         0.19.0
+python-engineio       4.1.0
+python-socketio       5.2.1
+pywin32               228
+PyYAML                5.3.1
+qt5-applications      5.15.2.2.2
+qt5-tools             5.15.2.1.2
+setuptools            49.2.0.post20200714
+sip                   4.19.8
+six                   1.15.0
+syncer                1.3.0
+tornado               4.5.3
+typing-extensions     3.7.4.3
+websockets            9.0.1
+wheel                 0.34.2
+wincertstore          0.2
+wxPython              4.1.0
+yarl                  1.6.3
+zipp                  3.5.0
+```
 
-## *<a id="C">Reference</a>*
+## *<a id="D">Reference</a>*
 
 1. https://github.com/dronekit/dronekit-python
 
