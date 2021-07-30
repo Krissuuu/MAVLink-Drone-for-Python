@@ -358,8 +358,7 @@ class COMMAND_ACK(object):
         self.result_ = result
 
     def __str__(self):
-        COMMAND_ACK_dict = {'command':self.command, 'result':self.result}
-        COMMAND_ACK_dict = {'cmd':self.command, 'cmd_result':self.result}
+        COMMAND_ACK_dict = {'type':"cmd_ack", 'cmd':self.command, 'cmd_result':self.result}
         COMMAND_ACK_json = json.dumps(COMMAND_ACK_dict)
         return COMMAND_ACK_json
         # return "COMMAND_ACK: command={},result={}".format(self.command, self.result)
@@ -371,7 +370,7 @@ class STATUSTEXT(object):
 
     def __str__(self):
         # STATUSTEXT_dict = {'severity':self.severity, 'text':self.text}
-        STATUSTEXT_dict = {'text':self.text}
+        STATUSTEXT_dict = {'type':"apm_text", 'text':self.text}
         STATUSTEXT_json = json.dumps(STATUSTEXT_dict)
         return STATUSTEXT_json
         # return "STATUSTEXT: command={},text={}".format(self.severity, self.text)
@@ -384,7 +383,7 @@ class MISSION_ACK(object):
 
     def __str__(self):
         # MISSION_ACK_dict = {'target_system':self.target_system, 'target_component':self.target_component, 'type':self.type}
-        MISSION_ACK_dict = {'mission_result':self.type}
+        MISSION_ACK_dict = {'type':"mission_ack", 'mission_result':self.type}
         MISSION_ACK_json = json.dumps(MISSION_ACK_dict)
         return MISSION_ACK_json
         # return "MISSION_ACK: target_system={},target_component={},type={}".format(self.target_system, self.target_component, self.type)

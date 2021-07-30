@@ -4,9 +4,9 @@ import time
 
 class Drone_message():
 
-    def __init__(self, vehicle=None, timestamp=None, location=None, battery=None, speed=None, attitude=None, gps_status=None, heartbeat=None,
-                 cmd_ack=None, status_text=None, mission_ack=None, mqtt=None):
-        self.vehicle = vehicle
+    def __init__(self, timestamp=None, location=None, battery=None, speed=None, attitude=None, gps_status=None, heartbeat=None,
+                 cmd_ack=None, status_text=None, mission_ack=None):
+
         self.timestamp = timestamp
         self.location = location
         self.battery = battery
@@ -17,8 +17,6 @@ class Drone_message():
         self.cmd_ack = cmd_ack
         self.status_text = status_text
         self.mission_ack = mission_ack
-
-        self.mqtt = mqtt
 
     def GLOBAL_POSITION_INT_callback(self, self_, attr_name, value):
         self.location = json.loads(str(value))
@@ -40,38 +38,23 @@ class Drone_message():
 
     def COMMAND_ACK_callback(self, self_, attr_name, value):
         self.cmd_ack = json.loads(str(value))
-        self.PacketTojson_Publish_COMMAND_ACK(self.cmd_ack)
 
     def STATUS_TEXT_callback(self, self_, attr_name, value):
         self.status_text = json.loads(str(value))
-        self.PacketTojson_Publish_APM_TEXT(self.status_text)
 
     def MISSION_ACK_callback(self, self_, attr_name, value):
         self.mission_ack = json.loads(str(value))
-        self.PacketTojson_Publish_MISSION_ACK(self.mission_ack)
 
-    def PacketTojson_MESSAGE(self):
+
+    def DRONE_MESSAGE(self):
         self.timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
         drone_msg_dict = {'timestamp':self.timestamp, 'location':self.location, 'battery':self.battery,
-                          'speed':self.speed, 'attitude':self.attitude, 'gps_status':self.gps_status, 'heartbeat':self.heartbeat}
-        drone_msg_dict_ = {'Drone':drone_msg_dict}
-        drone_msg_json = json.dumps(drone_msg_dict_)
-        return drone_msg_json
+                        'speed':self.speed, 'attitude':self.attitude, 'gps_status':self.gps_status,
+                        'heartbeat':self.heartbeat}
+        return drone_msg_dict
 
-    def Publish_MESSAGE(self):
-        while True:
-            MESSAGE_json = self.PacketTojson_MESSAGE()
-            self.mqtt.publish("id_name/message", MESSAGE_json)
-            time.sleep(1)
-
-    def PacketTojson_Publish_COMMAND_ACK(self, COMMAND_ACK):
-        COMMAND_ACK_json = json.dumps(COMMAND_ACK)
-        self.mqtt.publish("id_name/cmd_ack", COMMAND_ACK_json)
-
-    def PacketTojson_Publish_APM_TEXT(self, STATUS_TEXT):
-        STATUS_TEXT_json = json.dumps(STATUS_TEXT)
-        self.mqtt.publish("id_name/apm_text", STATUS_TEXT_json)
-
-    def PacketTojson_Publish_MISSION_ACK(self, MISSION_ACK):
-        MISSION_ACK_json = json.dumps(MISSION_ACK)
-        self.mqtt.publish("id_name/mission_ack", MISSION_ACK_json)
+    # def PRINT_MESSAGE(self):
+    #     while True:
+    #         MESSAGE = self.DRONE_MESSAGE()
+    #         print(MESSAGE)
+    #         time.sleep(1)
